@@ -85,28 +85,6 @@ EnsoLend operates with two main smart contract components:
 7.  Repayment and collateral release follow a similar VAA-based reverse flow.
 
 ```mermaid
-sequenceDiagram
-    participant Borrower (Sui)
-    participant Sui Contract
-    participant Wormhole Network
-    participant Relayer
-    participant Solana Contract
-    participant Lender (Solana)
-
-    Lender (Solana)->>+Solana Contract: Create Lend Offer
-    Borrower (Sui)->>+Sui Contract: Deposit Collateral (for Solana Offer)
-    Sui Contract->>+Wormhole Network: Emit VAA (Loan Request)
-    Wormhole Network-->>-Sui Contract: VAA Signed
-    Relayer->>Wormhole Network: Observe VAA
-    Relayer->>+Solana Contract: Post VAA
-    Solana Contract->>Solana Contract: Verify VAA, Match Loan
-    Solana Contract->>Lender (Solana): Lock Lender's Funds
-    Solana Contract->>+Wormhole Network: Emit VAA (Loan Funded)
-    Wormhole Network-->>-Solana Contract: VAA Signed
-    Relayer->>Wormhole Network: Observe VAA
-    Relayer->>+Sui Contract: Post VAA
-    Sui Contract->>Sui Contract: Verify VAA
-    Sui Contract->>-Borrower (Sui): Loan Active / Funds Accessible (Represented)
 
 Technology Stack
 
