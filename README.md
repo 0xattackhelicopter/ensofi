@@ -84,7 +84,6 @@ EnsoLend operates with two main smart contract components:
 6.  The Sui contract verifies the VAA and allows the borrower to access the (represented) funds or confirms the loan is active.
 7.  Repayment and collateral release follow a similar VAA-based reverse flow.
 
-```mermaid
 
 Technology Stack
 
